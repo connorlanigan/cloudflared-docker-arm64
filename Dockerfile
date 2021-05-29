@@ -1,7 +1,8 @@
-FROM alpine
+FROM --platform=linux/arm64 alpine 
 
 ADD https://github.com/cloudflare/cloudflared/releases/download/2021.5.10/cloudflared-linux-arm64 /cloudflared
 
-WORKDIR /
+RUN chmod +x /cloudflared
 
-RUN /cloudflared
+WORKDIR /
+CMD ["/cloudflared"]
